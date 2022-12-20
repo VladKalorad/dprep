@@ -14,13 +14,104 @@
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" style='border-radius: 15px;'>
         </form>
 
         <div class="text-end">
-          <%= link_to 'Войти', new_user_session_path, class: "btn btn-outline-light me-2"%>
-          <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "btn btn-warning"%>
+          <%= link_to 'Войти', new_user_session_path, class: "btn btn-outline-light me-2", style: 'border-radius: 15px;'%>
+          <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "btn btn-warning", style: 'border-radius: 15px;'%>
         </div>
       </div>
     </div>
   </header>
+  <nav class="navbar navbar-expand-lg navbar-dark p-3" style="background-color:#6032a8;">
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav nav-items">
+        <li class="nav-item dropdown" id="myDropdown">
+          <a class="nav-link dropdown-toggle ms-5 "  id="navbarDarkDropdownMenuLink" style='color: white; font-size: 16px;' href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-align-justify"></i>Категории</a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <% Category.select do |category| %>
+              <li class="nav-item dropdown"> 
+                <a class="dropdown-item" href="#"><%= category.name %> &raquo;</a>
+                <ul class="submenu dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <% Type.where(category_id: category.id).select do |type| %>
+                    <%= link_to type.name, products_path(type_filter: type.name), class: 'dropdown-item' %>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Товары', products_path, class: 'btn btn-outline-light me-2', style: 'color: white;', style: 'border-radius: 15px;'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Пицца', products_path(type_filter: 'Молоко'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Шаурма', products_path(type_filter: 'Кефир'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
+        </li>
+        <li class="link_navbar">
+          <%= link_to 'Суши', products_path(category_filter: 'Сыр'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Напитки', products_path(category_filter: 'Напитки'), class: 'btn btn-outline-light me-2' , style: 'border-radius: 15px;'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Торты', products_path(category_filter: 'Торты'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+if (window.innerWidth < 992) {
+  document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
+    everydropdown.addEventListener('hidden.bs.dropdown', function () {
+        this.querySelectorAll('.submenu').forEach(function(everysubmenu){
+          everysubmenu.style.display = 'none';
+        });
+    })
+  });
+
+  document.querySelectorAll('.dropdown-menu a').forEach(function(element){
+    element.addEventListener('click', function (e) {
+        let nextEl = this.nextElementSibling;
+        if(nextEl && nextEl.classList.contains('submenu')) {	
+          e.preventDefault();
+          if(nextEl.style.display == 'block'){
+            nextEl.style.display = 'none';
+          } else {
+            nextEl.style.display = 'block';
+          }
+        }
+    });
+  })
+}
+}); 
+</script>
+
+<style>
+@media all and (min-width: 992px) {
+	.dropdown-menu li{ position: relative; 	}
+	.nav-item .submenu{ 
+		display: none;
+		position: absolute;
+		left:100%; top:-7px;
+	}
+	.nav-item .submenu-left{ 
+		right:100%; left:auto;
+	}
+	.dropdown-menu > li:hover{ background-color:  }
+	.dropdown-menu > li:hover > .submenu{ display: block; }
+}	
+
+@media (max-width: 991px) {
+  .dropdown-menu .dropdown-menu{
+      margin-left:0.7rem; margin-right:0.7rem; margin-bottom: .5rem;
+  }
+}
+</style>

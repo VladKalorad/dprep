@@ -1,10 +1,15 @@
-<h1>Editing product</h1>
-
+<div class="container mt-3 px-2">
+<h1 class="text-center mt-3">Редактирование товара: </h1>
+<div class="d-flex justify-content-center">
 <%= render "form", product: @product %>
 
 <br>
-
+ <% if @product.image.attached?%>
+    <%= image_tag(@product.image, style:"width: 300px;height: 400px; d-flex justify-content-center", class: "img-fluid") %>
+    <% end%>
 <div>
-  <%= link_to "Show this product", @product %> |
-  <%= link_to "Back to products", products_path %>
 </div>
+</div>
+<div>
+</div>
+<hr>

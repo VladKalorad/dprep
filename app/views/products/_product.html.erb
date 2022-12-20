@@ -5,6 +5,17 @@
   </p>
 
   <p>
+  <% if product.image.attached?%>
+    <%= image_tag(product.image, style:"width: 200px;") %>
+    <% end%>
+  </p>
+
+ <p>
+    <strong>Composition:</strong>
+    <%= product.composition %>
+  </p>
+
+  <p>
     <strong>Price:</strong>
     <%= product.price %>
   </p>

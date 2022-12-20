@@ -1,10 +1,34 @@
-<p style="color: green"><%= notice %></p>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-<%= render @product %>
-
-<div>
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
-  <%= link_to "Back to products", products_path %>
-
-  <%= button_to "Destroy this product", @product, method: :delete %>
+<div class="container">
+    <div class="card ">
+        <div class="card-body">
+            <h3 class="card-title"><%= @product.name %></h3>
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-6">
+                    <div class="white-box text-center"> 
+                     <% if @product.image.attached?%>
+                    <%= image_tag(@product.image, style:"width: 500px; border-radius: 15px;") %>
+                    <%end%>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-6">
+                    <h4 class="box-title mt-5">Состав: </h4>
+                    <p><%= @product.composition %></p>
+                    <h2 class="box-title mt-5">Цена: </h2>
+                    <h4 class="mt-5">
+                       <%= @product.price %><small class="text-success">BYN</small>
+                    </h4>
+                    <h3 class="box-title mt-5">Производитель: </h3>
+                    <p><%= @product.manufacturer %></p>
+                    <button class="btn btn-primary btn-rounded">Добавить в корзину</button>
+                    <%= link_to "Назад", products_path, class: 'btn btn-outline-dark'%><br><br>
+                    <%= link_to "Изменить продукт", edit_product_path(@product), class: "btn btn-secondary" %> <br><br>
+                     <%= button_to "Удалить", @product, method: :delete , class: "btn btn-danger"%><br><br>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+</div>
+<br><br><br><hr>
