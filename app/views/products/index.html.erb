@@ -3,11 +3,11 @@
 
 <div id="products">
   <% @products.each do |product| %>
-  <div class="row row-cols-1 row-cols-md-4 g-3">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
   <div class="col">
     <div class="card" style="border-radius: 15px;">
       <% if product.image.attached?%>
-    <%= image_tag(product.image, style:"width: 400px;height: 400px; border-top-left-radius: 15px; border-top-right-radius: 15px;", class: "img-fluid") %>
+    <%= image_tag(product.image, style:"width: 400px; height: 400px; border-radius: 20px;", class: "img-fluid") %>
     <% end%>
       <div class="card-body">
         <div class="d-flex justify-content-center">

@@ -1,21 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe "types/new", type: :view do
-  before(:each) do
+RSpec.describe 'types/new' do
+  before do
     assign(:type, Type.new(
-      name: "MyString",
-      category: nil
-    ))
+                    name: 'MyString',
+                    category: nil
+                  ))
   end
 
-  it "renders new type form" do
+  it 'renders new type form' do
     render
 
-    assert_select "form[action=?][method=?]", types_path, "post" do
+    assert_select 'form[action=?][method=?]', types_path, 'post' do
+      assert_select 'input[name=?]', 'type[name]'
 
-      assert_select "input[name=?]", "type[name]"
-
-      assert_select "input[name=?]", "type[category_id]"
+      assert_select 'input[name=?]', 'type[category_id]'
     end
   end
 end

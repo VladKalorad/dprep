@@ -1,10 +1,51 @@
-<h1>Main Page</h1>
-<% if current_user %>
- <p>Hello <%= current_user.email %></p>
- <p>You are a <%= current_user.role %></p>
- <%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete %>
-<% else %>
-  <p>You are not signed in</p>
-    <%= link_to 'Log in', new_user_session_path%><br>
-    <%= link_to 'Sign up', new_user_registration_path%>
-  <% end %>
+<main>
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade mb-5 mt-4" data-bs-ride="carousel">
+    <div class="carousel-indicators" style="width:85%">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner" style="border-radius: 25px;">
+      <div class="carousel-item active">
+        <%= image_tag 'https://sushipapa.by/image/cache/catalog/20pervijsetna8Marta-2-2-906x633.jpg', style: "border-radius: 25px;margin-left: 685px;", size: '900x500' %>  
+      </div>
+      <div class="carousel-item">
+        <%= image_tag 'https://www.gastronom.ru/binfiles/images/20220420/b1fd4150.jpg',style: "border-radius: 25px;margin-left: 685px;", size: '900x500' %> 
+      </div>  
+      <div class="carousel-item">
+        <%= image_tag 'https://kurkumashaurma.by/assets/images/products/104/meksikanskaya-1200-dsc-5855.jpg', style: "border-radius: 25px;margin-left: 685px;", size: '900x500' %> 
+      </div>
+      <div class="container" style="border-radius:15px;">
+      <h1>Только у нас!</h1>
+          <hr style="width:20%">
+          <h3>🍞 Вкусные булочки</h3>
+          <h3>🎁 Ежедневные акции</h3>
+          <h3>🚀 Быстрая доставка</h3>
+          <h3>⚡ Мгновенное</h3>
+          <h3>оформление заказа</h3>
+          <h3>🏷 Сладкие цены</h3>
+          <h3>💯 Контроль качества</h3>
+          <h3>🚚 Доставка за 30 минут</h3>
+          <h3>🍉 Натуральные продукты</h3>
+          <h3>🍳 Уникальные рецепты</h3>
+          <%# <p><%= product.description %></p>
+    </div>
+    </div>
+  </div>
+  <div class="container marketing">
+    <div class="row">
+      <% @products = Product.all.sample(3) %>
+      <% @products.each do |product| %>
+        <div class="col-lg-4">
+        <% if product.image.attached?%>
+          <h2><%= product.name %></h2>
+          <%= image_tag(product.image, style:"width: 400px;height: 400px; border-radius: 25px;", class: "img-fluid") %>
+          <% end%>
+          <%# <p><%= product.description %></p>
+          <p><%= link_to 'Подробнее', product_path(product), class: "btn btn-outline-dark" %></p>
+        </div>
+      <% end %>
+    </div>
+    <hr class="featurette-divider">
+     <%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete %>
+</main>
