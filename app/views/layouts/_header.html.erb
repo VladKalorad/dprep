@@ -33,15 +33,8 @@
         <li class="nav-item dropdown" id="myDropdown">
           <a class="nav-link dropdown-toggle ms-5 "  id="navbarDarkDropdownMenuLink" style='color: white; font-size: 16px;' href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-align-justify"></i>Категории</a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <% Category.select do |category| %>
-              <li class="nav-item dropdown"> 
-                <a class="dropdown-item" href="#"><%= category.name %> &raquo;</a>
-                <ul class="submenu dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                  <% Type.where(category_id: category.id).select do |type| %>
-                    <%= link_to type.name, products_path(type_filter: type.name), class: 'dropdown-item' %>
-                  <% end %>
-                </ul>
-              </li>
+            <% Type.select do |category| %>
+                 <%= link_to category.name, products_path(type_filter: category.name), class: 'dropdown-item' %>
             <% end %>
           </ul>
         </li>
