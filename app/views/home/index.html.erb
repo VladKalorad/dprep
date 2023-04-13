@@ -1,51 +1,191 @@
 <main>
   <div id="carouselExampleCaptions" class="carousel slide carousel-fade mb-5 mt-4" data-bs-ride="carousel">
-    <div class="carousel-indicators" style="width:85%">
+    <div class="carousel-indicators" style="width:69%">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner" style="border-radius: 25px;">
       <div class="carousel-item active">
-        <%= image_tag 'https://sushipapa.by/image/cache/catalog/20pervijsetna8Marta-2-2-906x633.jpg', style: "border-radius: 25px;margin-left: 685px;", size: '900x500' %>  
+        <%= image_tag 'https://funart.pro/uploads/posts/2021-04/thumbs/1617377071_47-p-oboi-russkoe-pole-51.jpg', style: "border-radius: 25px;margin-left: 310px;", size: '1280x500' %>  
       </div>
       <div class="carousel-item">
-        <%= image_tag 'https://www.gastronom.ru/binfiles/images/20220420/b1fd4150.jpg',style: "border-radius: 25px;margin-left: 685px;", size: '900x500' %> 
+        <%= image_tag 'http://sabaflour.com/wp-content/uploads/2019/12/bg-6.jpg ',style: "border-radius: 25px;margin-left: 310px;", size: '1280x500' %> 
       </div>  
       <div class="carousel-item">
-        <%= image_tag 'https://kurkumashaurma.by/assets/images/products/104/meksikanskaya-1200-dsc-5855.jpg', style: "border-radius: 25px;margin-left: 685px;", size: '900x500' %> 
+        <%= image_tag 'https://priroda.club/uploads/posts/2021-12/1639626525_14-priroda-club-p-pole-kukuruzi-priroda-kraisvo-foto-14.jpg', style: "border-radius: 25px;margin-left: 310px;", size: '1280x500' %> 
       </div>
-      <div class="container" style="border-radius:15px;">
-      <h1>Только у нас!</h1>
-          <hr style="width:20%">
-          <h3>🍞 Вкусные булочки</h3>
-          <h3>🎁 Ежедневные акции</h3>
-          <h3>🚀 Быстрая доставка</h3>
-          <h3>⚡ Мгновенное</h3>
-          <h3>оформление заказа</h3>
-          <h3>🏷 Сладкие цены</h3>
-          <h3>💯 Контроль качества</h3>
-          <h3>🚚 Доставка за 30 минут</h3>
-          <h3>🍉 Натуральные продукты</h3>
-          <h3>🍳 Уникальные рецепты</h3>
-          <%# <p><%= product.description %></p>
-    </div>
     </div>
   </div>
+
+      <div class="section-header">
+          <h2>Актуальные товары:</h2>
+          <p>Наиболее актуальные товары в этом месяце, успей приобрести:</p>
+        </div>
+
   <div class="container marketing">
     <div class="row">
       <% @products = Product.all.sample(3) %>
       <% @products.each do |product| %>
         <div class="col-lg-4">
-        <% if product.image.attached?%>
-          <h2><%= product.name %></h2>
-          <%= image_tag(product.image, style:"width: 400px;height: 400px; border-radius: 25px;", class: "img-fluid") %>
-          <% end%>
-          <%# <p><%= product.description %></p>
-          <p><%= link_to 'Подробнее', product_path(product), class: "btn btn-outline-dark" %></p>
         </div>
       <% end %>
+
+
+
+<div id="products" name="products">
+  <% @products = Product.all.sample(6) %>
+  <% @products.each do |product| %>
+  <div class="row row-cols-3 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card" style="border-radius: 25px;">
+      <% if product.image.attached?%>
+    <%= image_tag(product.image, style:"width: 420px; height: 400px; border-radius: 25px;", class: "img-fluid") %>
+    <% end%>
+<div class="card-body">
+        <div class="d-flex justify-content-center">
+        <h4><%= link_to product.name, product, class: "a" %></h4>
+        </div>
+          <div class="card-body pb-0">
+            <div class="d-flex justify-content-left">
+              <p><strong>Производитель: </strong> <%=  product.manufacturer %></p>
+            </div>
+          </div>
+          <div class="card-body pb-0">
+            <div class="d-flex justify-content-left">
+              <p><strong>Цена: </strong><%= product.price %> <strong>BYN</strong></p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-center align-items-center pb-0 mb-1">
+          <p><%= link_to 'Подробнее', product_path(product), class: "btn btn-outline-dark", style: "padding: 10px 100px;"%></p>
+            </div>
+          </div>
+      </div>
     </div>
-    <hr class="featurette-divider">
+  </div
+  
+  <% end %>
+
+
+
+
+
+
+
+
+<div></div>
+
+      <section id="about" class="about" name="about">
+      <div class="container aos-init aos-animate" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>О нас</h2>
+          <p><strong>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ «МАНАС»</strong></p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 aos-init aos-animate" data-aos="fade-right">
+            <img src="https://www.epochtimes.com.ua/sites/default/files/field/image/06-2021/01-sokol-m-opryiskivanie-poley.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content aos-init aos-animate" data-aos="fade-left">
+            <h3>Добро пожаловать на сайт ООО «МАНАС»</h3>
+            <p class="fst-italic">
+              Сфера деятельности нашей компании — оптовая и розничная торговля химическими и биологическими
+средствами защиты растений, удобрениями, семенами сельскохозяйственных культур, а также
+сельскохозяйственной техникой.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i>Осуществляем скидки!</li>
+              <li><i class="bi bi-check-circle"></i>Возможна доставка!</li>
+            </ul>
+            <p>
+             Будем рады видеть вас с 9.00 до 18.00 по адресу: <br>
+             Г.Жлобин, Ул.К.Маркса, 64
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+      <section id="contact" class="contact" name="contact">
+      <div class="container aos-init aos-animate" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Контакты</h2>
+          <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p>
+        </div>
+
+        <div class="row gx-lg-0 gy-4">
+
+          <div class="col-lg-4">
+
+            <div class="info-container d-flex flex-column align-items-center justify-content-center">
+              <div class="info-item d-flex">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h4>Адрес:</h4>
+                  <p>A108 Adam Street, New York, NY 535022</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h4>Электронная почта:</h4>
+                  <p>info@example.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-phone flex-shrink-0"></i>
+                <div>
+                  <h4>Телефон:</h4>
+                  <p>+375 (29) 330-72-52 </p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-clock flex-shrink-0"></i>
+                <div>
+                  <h4>Время работы:</h4>
+                  <p>Понедельник-Суббота: 10:00 - 20:00</p>
+                </div>
+              </div><!-- End Info Item -->
+            </div>
+
+          </div>
+
+          <div class="col-lg-8">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" required="" style="border-radius:15px;">
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Электронная почта" required="" style="border-radius:15px;">
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Что случилось?" required="" style="border-radius:15px;">
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="7" placeholder="Ваше сообщение" required="" style="border-radius:15px;"></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Отправить</button></div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+    </section>
+    </div>
      <%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete %>
 </main>
