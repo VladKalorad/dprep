@@ -6,6 +6,7 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <a><img src="https://i.imgur.com/akcPZKk.png" style="width: 50px; margin:-5px 7px;" alt="logo"></li>
           <li><%= link_to 'Главная', root_path, class: "nav-link px-2 text-secondary"%></li>
           <li><a href="#goods" class="nav-link px-2 text-white">Товары</a></li>
           <li><a href="#contact" class="nav-link px-2 text-white">Контакты</a></li>
@@ -13,7 +14,9 @@
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" style='border-radius: 15px;'>
+          <%= form_tag products_path, class: 'd-flex', method: :get do %>
+          <%= text_field_tag :search, params[:search], class: 'form-control form-control-dark', placeholder: "Поиск..", style: 'border-radius: 15px;'%> 
+        <% end %>
         </form>
 
         <div class="text-end">
