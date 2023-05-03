@@ -6,7 +6,7 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <a><img src="https://i.imgur.com/akcPZKk.png" style="width: 50px; margin:-5px 7px;" alt="logo"></li>
+          
           <li><%= link_to 'Главная', root_path, class: "nav-link px-2 text-secondary"%></li>
           <li><a href="#goods" class="nav-link px-2 text-white">Товары</a></li>
           <li><a href="#contact" class="nav-link px-2 text-white">Контакты</a></li>
@@ -20,8 +20,36 @@
         </form>
 
         <div class="text-end">
+        <% if current_user %>
+           <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-warning", style: "margin: -100px; margin-top: -60px;"%>
+        <% if current_user&.admin? %>
+           
+              <a class="nav-link dropdown-toggle " href="#" id="navbarDarkDropdownMenuLink" style='color: white; font-size: 16px; margin-top: -10px;' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Добавить 
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <%= link_to 'Товар', new_product_path, class: 'dropdown-item' %>
+                <%= link_to 'Категория', new_category_path, class: 'dropdown-item' %>
+                <%= link_to 'Подкатегория', new_type_path, class: 'dropdown-item' %>
+              </ul>
+          
+          <% end %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user fa-lg"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              <% if current_user %>
+                <%= link_to 'Личный кабинет', user_path(current_user), class: 'dropdown-item' %>
+              <% end %>
+
+              <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+            </ul>
+          </li>
+        <% else %>
           <%= link_to 'Войти', new_user_session_path, class: "btn btn-outline-light me-2", style: 'border-radius: 15px;'%>
           <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "btn btn-warning ", style: 'border-radius: 15px;'%>
+           <% end %>
         </div>
       </div>
     </div>
@@ -49,19 +77,19 @@
           <%= link_to 'Товары', products_path, class: 'btn btn-outline-light me-2', style: 'color: white;', style: 'border-radius: 15px;'%>
         </li>
         <li class="nav-item">
-          <%= link_to 'Протравители семян', products_path(type_filter: 'Пицца'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
+          <%= link_to 'Пицца', products_path(type_filter: 'Пицца'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Гербициды', products_path(type_filter: 'Шаурма'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
+          <%= link_to 'Шаурма', products_path(type_filter: 'Шаурма'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
         </li>
         <li class="link_navbar">
-          <%= link_to 'Инсектициды', products_path(category_filter: 'Суши'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
+          <%= link_to 'Суши', products_path(category_filter: 'Суши'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Фунгициды', products_path(category_filter: 'Напитки'), class: 'btn btn-outline-light me-2' , style: 'border-radius: 15px;'%>
+          <%= link_to 'Напитки', products_path(category_filter: 'Напитки'), class: 'btn btn-outline-light me-2' , style: 'border-radius: 15px;'%>
         </li>
         <li class="nav-item">
-          <%= link_to 'Десиканты', products_path(category_filter: 'Торты'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
+          <%= link_to 'Торты', products_path(category_filter: 'Торты'), class: 'btn btn-outline-light me-2', style: 'border-radius: 15px;' %>
         </li>
       </ul>
     </div>

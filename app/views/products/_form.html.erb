@@ -37,7 +37,7 @@
 
   <div class="form-group mb-3">
     <%= form.label :type_id, style: "display: block" %>
-    <%= form.text_field :type_id, class: 'form-control' %>
+    <%= form.collection_select :type_id, Type.order(:name), :id, :name, { prompt: 'Выберите тип товара' }, { class: 'form-control' } %>
   </div>
 
   <div class="actions mt-3 mb-3">

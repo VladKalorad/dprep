@@ -23,8 +23,10 @@
                     <p><%= @product.manufacturer %></p>
                     <button class="btn btn-primary btn-rounded">Добавить в корзину</button>
                     <%= link_to "Назад", products_path, class: 'btn btn-outline-dark'%><br><br>
+                    <% if current_user&.admin? %>
                     <%= link_to "Изменить продукт", edit_product_path(@product), class: "btn btn-secondary" %> <br><br>
                      <%= button_to "Удалить", @product, method: :delete , class: "btn btn-danger"%><br><br>
+                     <%end%>
                 </div>
             </div>
         </div>
