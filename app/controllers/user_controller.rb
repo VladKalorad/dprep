@@ -5,17 +5,20 @@ class UserController < ApplicationController
     @user = current_user
   end
 
-  def edit
-    @user = current_user
-  end
+  # def edit
+  #   @user = current_user
+  # end
 
-  def update
-    if current_user.update(user_params)
-      redirect_to current_user, notice: 'Профиль успешно обновлён.'
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @user.update(user_params)
+  #       format.html { redirect_to current_user, notice: 'Type was successfully updated.' }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @user.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   private
 

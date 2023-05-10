@@ -1,30 +1,54 @@
-<header class="p-3 bg-dark text-white">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-        </a>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          
+ <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+     
+      <a href="http://localhost:3000/" class="logo d-flex align-items-center me-auto me-lg-0" style="margin-left:55px;">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>Новый Континент</h1>
+      </a>
+
+      <nav id="navbar" class="navbarg">
+        <ul>
           <li><%= link_to 'Главная', root_path, class: "nav-link px-2 text-secondary"%></li>
-          <li><a href="#goods" class="nav-link px-2 text-white">Товары</a></li>
-          <li><a href="#contact" class="nav-link px-2 text-white">Контакты</a></li>
-          <li><a href="#about" class="nav-link px-2 text-white">О нас</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <li><a href="#goods" class="nav-link px-2 text-secondary">Товары</a></li>
+          <li><a href="#contact" class="nav-link px-2 text-secondary">Контакты</a></li>
+          <li><a href="#events" class="nav-link px-2 text-secondary">О нас</a></li>
+      </nav><!-- .navbar -->
+       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <%= form_tag products_path, class: 'd-flex', method: :get do %>
-          <%= text_field_tag :search, params[:search], class: 'form-control form-control-dark', placeholder: "Поиск..", style: 'border-radius: 15px;'%> 
+          <%= text_field_tag :search, params[:search], class: 'form-control form-control-dark', placeholder: "Поиск..", style: 'border-radius: 15px; border: 2px solid grey'%> 
         <% end %>
         </form>
-
+      <% if current_user %>
+       <% if current_user&.admin? %>
+           
+              <a class="nav-link dropdown-toggle  " href="#" id="navbarDarkDropdownMenuLink" style='color: red; padding:-10px; font-size: 16px; margin-top: 5 px;' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Просмотр 
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <%= link_to 'Товары', products_path, class: 'dropdown-item' %>
+                <%= link_to 'Категории', categories_path, class: 'dropdown-item' %>
+                <%= link_to 'Подкатегории', types_path, class: 'dropdown-item' %>
+              </ul>
+          
+          <% end %>
+            <a class="nav-link dropdown-toggle btn btn-danger" style="color: white; font-size: 16px; border-radius:15px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+              👶
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+              
+              <%= link_to 'Личный кабинет', user_path(current_user), class: 'dropdown-item' %>
+              <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: 'dropdown-item' %>
+              
+            </ul>
+            <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-warning", style: "margin-left:5px; border-radius:15px;"%>
+ <% end %>
         <div class="text-end">
         <% if current_user %>
-           <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-warning", style: "margin: -100px; margin-top: -60px;"%>
         <% if current_user&.admin? %>
            
-              <a class="nav-link dropdown-toggle " href="#" id="navbarDarkDropdownMenuLink" style='color: white; font-size: 16px; margin-top: -10px;' role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle  " href="#" id="navbarDarkDropdownMenuLink" style='color: red; padding:-10px; font-size: 16px; margin-top: -2px;' role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Добавить 
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -34,37 +58,26 @@
               </ul>
           
           <% end %>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-user fa-lg"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              <% if current_user %>
-                <%= link_to 'Личный кабинет', user_path(current_user), class: 'dropdown-item' %>
-              <% end %>
-
-              <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-            </ul>
-          </li>
         <% else %>
-          <%= link_to 'Войти', new_user_session_path, class: "btn btn-outline-light me-2", style: 'border-radius: 15px;'%>
-          <%= link_to 'Зарегистрироваться', new_user_registration_path, class: "btn btn-warning ", style: 'border-radius: 15px;'%>
+          <%= link_to 'Войти', new_user_session_path, class: "btn-book-a-table", style: 'border-radius: 15px; padding:12px 20px 12px 20px;'%>
+          <%= link_to 'Регистрация', new_user_registration_path, class: "btn-book-a-table", style: 'border-radius: 15px;padding:12px 20px 12px 20px;'%>
            <% end %>
         </div>
       </div>
     </div>
-  </header>
-  <nav class="navbar navbar-expand-lg navbar-dark p-3" style="background-color:#008374;">
-  <div class="container">
+    </div>
+  </header><!-- End Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark p-3" style="background-color:#a80531;">
+  <div class="container" style="margin-top:100px; margin-bottom:10px;">
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav nav-items">
         <li class="nav-item dropdown" id="myDropdown">
           <a class="nav-link dropdown-toggle ms-5 "  id="navbarDarkDropdownMenuLink" style='color: white; font-size: 16px;' href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-align-justify"></i>Категории</a>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+          <ul class="dropdown-menu " aria-labelledby="navbarDarkDropdownMenuLink" style="border-radius:8px;">
                 <% Category.select do |category| %>
               <li class="nav-item dropdown"> 
                 <a class="dropdown-item" href="#"><%= category.name %> &raquo;</a>
-                <ul class="submenu dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                <ul class="submenu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink" style="border-radius:8px;">
                   <% Type.where(category_id: category.id).select do |type| %>
                     <%= link_to type.name, products_path(type_filter: type.name), class: 'dropdown-item' %>
                   <% end %>

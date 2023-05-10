@@ -1,8 +1,9 @@
 <div class="container mt-5">
   <div class="col-md-12 text-center">
     <div class="thumb-wrapper">
+      <h3><b>ФИО: </b><p class="product-price"><%= @user.name %></p></h3>
       <h3><b>Электронная почта: </b><p class="product-price"><%= @user.email %></p></h3>
-      <%= link_to '<i class="fas fa-pencil fa-lg"></i>'.html_safe, edit_user_registration_path, class: 'btn btn-secondary' %>
+      <%= link_to "Изменить", edit_user_registration_path(@user), class: 'btn btn-secondary' %>
     </div>
   </div>
 </div>

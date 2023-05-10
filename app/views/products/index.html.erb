@@ -3,7 +3,6 @@
 <% if current_user&.admin?%>
 <h1><%= link_to 'Добавить товар', new_product_path, class: 'btn btn-outline-dark' %></h1>
 <%end%>
-
 <div id="products">
   <% @products.each do |product| %>
   <div class="row row-cols-1 row-cols-md-4 g-4">
