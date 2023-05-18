@@ -42,6 +42,7 @@
               <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: 'dropdown-item' %>
               
             </ul>
+             <%= link_to '👜'.html_safe, cart_path, class: 'nav-link', style: "font-size:25px;"%>
             <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-warning", style: "margin-left:5px; border-radius:15px;"%>
  <% end %>
         <div class="text-end">
