@@ -73,6 +73,6 @@ end
 
 gem 'ransack'
 
-gem "pundit", "~> 2.3"
+gem 'pundit', '~> 2.3'
 
 gem 'font-awesome-sass'

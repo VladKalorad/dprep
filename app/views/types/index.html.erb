@@ -1,14 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-5">
+  <%= link_to 'Добавить подкатегорию', new_type_path, class: "btn btn-outline-dark; d-flex justify-content-center" %></h1>
+  <table class="table text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>Название</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-<h1>Types</h1>
-
-<div id="types">
-  <% @types.each do |type| %>
-    <%= render type %>
-    <p>
-      <%= link_to "Show this type", type %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New type", new_type_path %>
+    <tbody class="table-bordered">
+        <% @types.each do |type| %>
+        <tr>
+          <td><%= type.name %></td>
+          <td><%= link_to 'Редактировать'.html_safe, edit_type_path(type), class: "btn btn-light" %></td>
+          <td><%= button_to 'Удалить', type, method: :delete , class: "btn btn-outline-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

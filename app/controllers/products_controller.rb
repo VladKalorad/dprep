@@ -62,6 +62,11 @@ class ProductsController < ApplicationController
 
   private
 
+  def search
+    q = params[:product][:name]
+    @products = Product.find(:all, :conditions => ["name LIKE %?%",q])
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_product
     @product = Product.find(params[:id])
@@ -69,6 +74,6 @@ class ProductsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def product_params
-    params.require(:product).permit(:name, :composition, :price, :manufacturer, :type_id, :image)
+    params.require(:product).permit(:name, :composition, :price, :manufacturer, :type_id, :image, :search)
   end
 end
