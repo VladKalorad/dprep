@@ -15,11 +15,6 @@
           <li><a href="#contact" class="nav-link px-2 text-secondary">Контакты</a></li>
           <li><a href="#events" class="nav-link px-2 text-secondary">О нас</a></li>
       </nav><!-- .navbar -->
-       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <%= form_tag products_path, class: 'd-flex', method: :get do %>
-          <%= text_field_tag :search, params[:search], class: 'form-control form-control-dark', placeholder: "Поиск..", style: 'border-radius: 15px; border: 2px solid grey'%> 
-        <% end %>
-        </form>
       <% if current_user %>
        <% if current_user&.admin? %>
            

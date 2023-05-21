@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
     if params[:type_filter]
       @products = Product.where(type: Type.where(name: params[:type_filter]))
     elsif params[:category_filter]
