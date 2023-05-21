@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'cart', to: 'cart#show'
   post 'cart/add'
   post 'cart/remove'
+  post 'search', to: 'search#index'
   resources :products
   resources :types
   resources :categories

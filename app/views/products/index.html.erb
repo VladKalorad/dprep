@@ -1,4 +1,17 @@
 <div class="container mt-1 px-1">
+<%= search_form_for @q do |f| %>
+ <nav id="navbar" class="navbarg">
+        <ul>
+          <li> <%= f.search_field :name_cont, class: 'form-control form-control-dark', placeholder: "Поиск..", style: 'border-radius: 15px; border: 2px solid grey; width:100%;'%></li>
+          <li><%= f.submit "Поиск", class: 'btn btn-outline-danger' %></li>
+          <li><%= sort_link(@q, :price, "Сортировка по цене: ", default_order: :asc, class: "nav-link px-2 text-secondary") %></li>
+          <li><%= sort_link(@q, :name, "Сортировка по названию: ", default_order: :asc, class: "nav-link px-2 text-secondary") %></li>
+      </nav><!-- .navbar -->
+ 
+
+      
+        
+        <% end %>
 <h1>Наши товары:</h1>
 <% if current_user&.admin?%>
 <h1><%= link_to 'Добавить товар', new_product_path, class: 'btn btn-outline-dark' %></h1>
