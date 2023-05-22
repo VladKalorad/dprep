@@ -1,0 +1,82 @@
+
+<%= form_with model: @payment, local: false, method: :post do |f| %>
+
+  <%= f.hidden_field :cart_id, value: @cart.orderables %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="form-group mb-3">
+   <h2><%= f.label "Название:", style: "margin-left:520px;" %></h2>
+    <%= f.text_field :name, class: 'form-control',style: "width:40%; margin-left:520px; padding:0.5% 1%; font-size: 20px;border-radius: 12px;margin-top:15px;", value: current_user.name if current_user.name.present? %>
+  </div>
+
+   <div class="form-group mb-3">
+    <h2><%= f.label "Электронная почта:", style: "margin-left:520px;" %></h2>
+    <%= f.text_field :email, class: 'form-control',style: "width:40%; margin-left:520px; padding:0.5% 1%; font-size: 20px;border-radius: 12px;margin-top:15px;", value: current_user.email if current_user.email.present? %>
+  </div>
+
+   <div class="form-group mb-3">
+    <h2><%= f.label "Номер телефона:", style: "margin-left:520px;" %></h2>
+    <%= f.text_field :phone, class: 'form-control',style: "width:40%; margin-left:520px; padding:0.5% 1%; font-size: 20px;border-radius: 12px;margin-top:15px;", value: current_user.phone if current_user.phone.present? %>
+  </div>
+
+  <div class="form-group mb-3">
+   <h2> <%= f.label "Город:", style: "margin-left:520px;" %></h2>
+    <%= f.text_field :city, class: 'form-control',style: "width:40%; margin-left:520px; padding:0.5% 1%; font-size: 20px;border-radius: 12px;margin-top:15px;", value: current_user.city if current_user.city.present? %>
+  </div>
+
+  <div class="form-group mb-3">
+    <h2><%= f.label "Улица:", style: "margin-left:520px;" %></h2>
+    <%= f.text_field :street, class: 'form-control',style: "width:40%; margin-left:520px; padding:0.5% 1%; font-size: 20px;border-radius: 12px;margin-top:15px;", value: current_user.street if current_user.street.present? %>
+  </div>
+
+    <div class="form-group mb-3">
+    <h2><%= f.label "Дом:", style: "margin-left:520px;" %></h2>
+    <%= f.text_field :street, class: 'form-control',style: "width:40%; margin-left:520px; padding:0.5% 1%; font-size: 20px;border-radius: 12px;margin-top:15px;", value: current_user.house if current_user.house.present? %>
+  </div>
+
+    <div class="form-group mb-3">
+   <h2> <%= f.label "Квартира:", style: "margin-left:520px;" %></h2>
+    <%= f.text_field :flat_number, class: 'form-control',style: "width:40%; margin-left:520px; padding:0.5% 1%; font-size: 20px;border-radius: 12px;margin-top:15px;", value: current_user.flat_number if current_user.flat_number.present? %>
+  </div>
+
+<% end %>
+</div>
+
+<div class="container mt-5 mb-3">
+  <%= form_with model: @payment, local: false, method: :post do |f| %>
+                <%= f.hidden_field :cart_id, value: @cart.orderables %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#checkoutModal" style="margin-left:300px;padding:1% 10.6%;">Оплатить</button>
+                 <%= link_to 'Корзина', cart_path, class: 'btn btn-outline-dark', style: "margin-left:0px;padding:1% 10.6%;" %>
+                <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModal" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="checkoutModalLabel">Подтверждения заказа</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-house"></i></span>
+                          <input type="text" class="form-control" placeholder="Адрес доставки" aria-label="Address" aria-describedby="basic-addon1">
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                          <input value="<%= current_user.name if current_user.name.present? %>" type="text" class="form-control" placeholder="ФИО" aria-label="Fullname" aria-describedby="basic-addon1">
+                        </div>
+
+                  
+                      </div>
+                      <% @cart.orderables.order('id DESC').each do |orderable| %>
+                      <div class="modal-footer justify-content-between">
+                        <p class="text-dark fs-3">Сумма: <%= orderable.total %> BYN</p>
+                        <%= f.submit 'Подтвердить', class: 'btn btn-success' %><br>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 <% end %>
+              <% end %>
+</div>

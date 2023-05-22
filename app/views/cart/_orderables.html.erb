@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-between mb-4">
               <p class="mb-2">Сумма</p>
               <p class="mb-2"><%= @cart.total.round(2) %> BYN</p>
-             <button type="button" class="btn btn-outline-light" style="margin-top:-6px;">Оформить заказ</button>
+               <%= link_to "Оформить заказ", new_payment_path, class: 'btn btn-outline-light', style: "margin-top:-6px;"%>
           </div>
 </section>
     <section class="h-100" style="background-color: #eee; margin-top:-273px; ">

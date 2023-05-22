@@ -14,6 +14,26 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Адрес почты', class: 'form-control py-2' %>
       </div>
 
+       <div class="field mt-3">
+        <%= f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: 'Номер телефона', class: 'form-control py-2' %>
+      </div>
+
+       <div class="field mt-3">
+        <%= f.text_field :city, autofocus: true, placeholder: 'Город', class: 'form-control py-2' %>
+      </div>
+
+      <div class="field mt-3">
+      <%= f.text_field :street, autofocus: true, autocomplete: "street", placeholder: 'Улица', class: 'form-control py-2' %>
+      </div>
+
+      <div class="field mt-3">
+      <%= f.text_field :house, autofocus: true, autocomplete: "flat_number", placeholder: '№ дома', class: 'form-control py-2' %>
+      </div>
+
+      <div class="field mt-3">
+      <%= f.text_field :flat_number, autofocus: true, autocomplete: "flat_number", placeholder: '№ квартиры', class: 'form-control py-2' %>
+      </div>
+
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Ждём подтверждения с адреса: <%= resource.unconfirmed_email %></div>
       <% end %>

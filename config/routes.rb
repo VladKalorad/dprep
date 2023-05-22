@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'cart/remove'
   post 'search', to: 'search#index'
   resources :products
+  resources :payments
   resources :types
   resources :categories
   resources :user

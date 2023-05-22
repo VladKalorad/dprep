@@ -1,9 +1,21 @@
 <div class="container mt-5">
   <div class="col-md-12 text-center">
     <div class="thumb-wrapper">
-      <h3><b>ФИО: </b><p class="product-price"><%= @user.name %></p></h3>
-      <h3><b>Электронная почта: </b><p class="product-price"><%= @user.email %></p></h3>
-      <%= link_to "Изменить", edit_user_registration_path(@user), class: 'btn btn-secondary' %>
+
+
+
+
+    
+
+      <h3><b>ФИО: </b><br> <input value="<%= @user.name if @user.name.present? %>" type="text" class="form-control" placeholder="ФИО" aria-label="Fullname" aria-describedby="basic-addon1" readonly style="width:40%; margin-left:390px; padding:0.5% 2%; font-size: 20px;border-radius: 12px; margin-top:15px;"></p></h3>
+      <h3><b>Электронная почта: </b><br><strong> <input value="<%= @user.email if @user.email.present? %>" type="text" class="form-control" placeholder="ФИО" aria-label="Fullname" aria-describedby="basic-addon1" readonly style="width:40%; margin-left:390px; padding:0.5% 2%; font-size: 20px;border-radius: 12px;margin-top:15px;"></strong></h3>
+       <h3><b>Телефон: </b><br><strong> <input value="<%= @user.phone if @user.phone.present? %>" type="text" class="form-control" placeholder="ФИО" aria-label="Fullname" aria-describedby="basic-addon1" readonly style="width:40%; margin-left:390px; padding:0.5% 2%; font-size: 20px;border-radius: 12px;margin-top:15px;"></strong></h3>
+      <h3><b>Город: </b><br><strong> <input value="<%= @user.city if @user.city.present? %>" type="text" class="form-control" placeholder="ФИО" aria-label="Fullname" aria-describedby="basic-addon1" readonly style="width:40%; margin-left:390px; padding:0.5% 2%; font-size: 20px;border-radius: 12px;margin-top:15px;"></strong></h3>
+       <h3><b>Улица: </b><br><strong> <input value="<%= @user.street if @user.street.present? %>" type="text" class="form-control" placeholder="ФИО" aria-label="Fullname" aria-describedby="basic-addon1" readonly style="width:40%; margin-left:390px; padding:0.5% 2%; font-size: 20px;border-radius: 12px;margin-top:15px;"></strong></h3>
+      <h3><b>№ дома: </b><br><strong> <input value="<%= @user.house if @user.house.present? %>" type="text" class="form-control" placeholder="ФИО" aria-label="Fullname" aria-describedby="basic-addon1" readonly style="width:40%; margin-left:390px; padding:0.5% 2%; font-size: 20px;border-radius: 12px;margin-top:15px;"></strong></h3>
+       <h3><b>№ квартиры: </b><br><strong> <input value="<%= @user.flat_number if @user.flat_number.present? %>" type="text" class="form-control" placeholder="ФИО" aria-label="Fullname" aria-describedby="basic-addon1" readonly style="width:40%; margin-left:390px; padding:0.5% 2%; font-size: 20px;border-radius: 12px;margin-top:15px;"></strong></h3>
+
+      <%= link_to "Изменить", edit_user_registration_path(@user), class: 'btn btn-outline-dark',style: "padding:10px 220px; margin-top: 20px;" %>
     </div>
   </div>
 </div>

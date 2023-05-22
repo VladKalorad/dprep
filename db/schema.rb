@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_18_192539) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_21_232019) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,11 +63,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_192539) do
     t.index ["product_id"], name: "index_orderables_on_product_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.float "subtotal"
-    t.float "total"
+  create_table "payments", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_payments_on_cart_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -99,6 +101,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_192539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", default: " ", null: false
+    t.string "phone"
+    t.string "city"
+    t.string "street"
+    t.string "house"
+    t.integer "flat_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -107,6 +114,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_192539) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "orderables", "carts"
   add_foreign_key "orderables", "products"
+  add_foreign_key "payments", "carts"
+  add_foreign_key "payments", "users"
   add_foreign_key "products", "types"
   add_foreign_key "types", "categories"
 end

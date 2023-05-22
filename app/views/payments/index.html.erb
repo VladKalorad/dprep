@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <table class="table text-center">
+    <thead class="table-dark">
+      <tr>
+        <th>Картинка</th>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Оплачено</th>
+      </tr>
+    </thead>
+
+    <tbody class="table-bordered">
+      <% @payments.includes([:order]).each do |payment| %>
+        <% payment.orderables.includes([:product]).each do |item| %>
+          <tr>
+            <td><%= link_to image_tag(item.product.image.url(:cart)), product_path(item.product) if item.product.image? %></td>
+            <td class="product-text"><%= item.product.name %></td>
+            <td class="product-price"><%= item.product.price %></td>
+            <td class="product-text"><%= payment.created_at.strftime("%d-%m-%Y") %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
