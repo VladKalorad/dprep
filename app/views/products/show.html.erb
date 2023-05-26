@@ -1,7 +1,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="container">
-    <div class="card ">
+    <div class="card" style="margin-top:20px; border-radius:25px;">
         <div class="card-body">
             <h3 class="card-title"><%= @product.name %></h3>
             <div class="row">
@@ -15,13 +15,15 @@
                 <div class="col-lg-7 col-md-7 col-sm-6">
                     <h4 class="box-title mt-5">Состав: </h4>
                     <p><%= @product.composition %></p>
-                    <h2 class="box-title mt-5">Цена: </h2>
-                    <h4 class="mt-5">
-                       <%= @product.price %><small class="text-success">BYN</small>
-                    </h4>
-                    
+                    <h2 class="box-title mt-5">Цена:  <%= @product.price %><small class="text-success">BYN</small></h2>
+                    <h2 class="box-title mt-5">Масса продукта: </h2>
+                    <p> <%= @product.mass %></p>
+                    <h2 class="box-title mt-5">Cтрана производитель: </h2>
+                    <p><%= @product.country %></p>
                     <h3 class="box-title mt-5">Производитель: </h3>
                     <p><%= @product.manufacturer %></p>
+                    <h3 class="box-title mt-5">Рекомендации: </h3>
+                    <p><%= @product.recommendation %></p>
                       <% if current_user %>
                     <%= form_with(url: cart_add_path) do |f| %>
                     <%= f.hidden_field :id, value: @product.id %>

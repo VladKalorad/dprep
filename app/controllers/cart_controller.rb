@@ -26,13 +26,8 @@ class CartController < ApplicationController
   end
 
   def remove
-    Orderable.find_by(id: params[:id]).destroy
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace('cart',
-                                                  partial: 'cart/cart',
-                                                  locals: { cart: @cart })
-      end
-    end
+    @line_item = Orderable.find_by(id: params[:product_id])
+    @line_item.destroy
+    redirect_to cart_path
   end
 end

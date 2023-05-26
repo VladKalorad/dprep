@@ -2,7 +2,11 @@ class PaymentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @payments = current_user.payments.order(created_at: :desc)
+    if current_user.admin?
+      @payments = Payment.order(created_at: :desc)
+    else
+      @payments = current_user.payments.order(created_at: :desc)
+    end
   end
 
   def new
@@ -20,6 +24,7 @@ class PaymentsController < ApplicationController
     end
   end
 
+  
   private
 
   def payment_params

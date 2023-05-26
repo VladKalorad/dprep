@@ -1,26 +1,42 @@
-<div class="container mt-5">
-  <table class="table text-center">
+<div class="container mt-4">
+  <table class="table text-center" style="width:120%; margin-left:-100px;">
     <thead class="table-dark">
       <tr>
         <th>Картинка</th>
         <th>Название</th>
+        <th>Количество</th>
         <th>Цена</th>
         <th>Оплачено</th>
+        <th>Номер телефона</th>
+        <th>Фио</th>
+        <th>Город</th>
+        <th>Улица</th>
+        <th>Дом</th>
+        <th>Квартира</th>
+        <th></th>
       </tr>
     </thead>
 
     <tbody class="table-bordered">
-      <% @payments.includes([:order]).each do |payment| %>
-        <% payment.orderables.includes([:product]).each do |item| %>
-          <tr>
-            <td><%= link_to image_tag(item.product.image.url(:cart)), product_path(item.product) if item.product.image? %></td>
-            <td class="product-text"><%= item.product.name %></td>
-            <td class="product-price"><%= item.product.price %></td>
-            <td class="product-text"><%= payment.created_at.strftime("%d-%m-%Y") %></td>
-          </tr>
+      <% @payments.each do |payment| %>
+          <% payment.cart.orderables.each do |orderable|%>
+            <tr>
+              <td><%=image_tag(orderable.product.image, style:"width: 70px; height: 50px; border-radius: 20px;", class: "img-fluid") %></td>
+              <td class="product-text"><%= orderable.product.name %></td>
+                 <td class="product-text"><%= orderable.quantity %></td>
+              <td class="product-price"><%= orderable.product.price %></td>
+              <td class="product-text"><%= orderable.created_at.to_s.split('UTC')[0].capitalize %></td>
+              <td class="product-text"><%= payment.user.phone %></td>
+              <td class="product-text"><%= payment.user.name %></td>
+              <td class="product-text"><%= payment.user.city %></td>
+              <td class="product-text"><%= payment.user.street %></td>
+              <td class="product-text"><%= payment.user.house %></td>
+              <td class="product-text"><%= payment.user.flat_number %></td>
+              <td class="product-text"> <%= button_to "Удалить", payment, method: :delete , class: "btn btn-danger"%><br></td>
+            </tr>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
+         <% end %>
+  </tbody>
+ </table>
 
 </div>
