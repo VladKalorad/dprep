@@ -32,7 +32,11 @@
               <td class="product-text"><%= payment.user.street %></td>
               <td class="product-text"><%= payment.user.house %></td>
               <td class="product-text"><%= payment.user.flat_number %></td>
-              <td class="product-text"> <%= button_to "Удалить", payment, method: :delete , class: "btn btn-danger"%><br></td>
+              <td class="product-text"><div class="form-check form-switch">
+              <% if current_user.admin?%>
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+              <% end%>
+            </div></td>
             </tr>
         <% end %>
          <% end %>
