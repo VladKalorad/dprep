@@ -8,12 +8,12 @@ class ApplicationController < ActionController::Base
   end
 
   def initialize_cart
-    @cart ||= Cart.find_by(id: session[:cart_id])
-
-    return unless @cart.nil?
-
-    @cart = Cart.create
-    session[:cart_id] = @cart.id
+      if Cart.find_by(id: session[:cart_id]).nil?
+        @cart = Cart.create
+        session[:cart_id] = @cart.id
+      else
+        @cart = Cart.find_by(id: session[:cart_id])
+      end
   end
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -21,6 +21,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email,:phone,:city,:street,:flat_number,:house, :password, :current_password) }
   end
 end

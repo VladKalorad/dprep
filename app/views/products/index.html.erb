@@ -28,19 +28,11 @@
         <div class="d-flex justify-content-center">
         <p><%= link_to product.name, product, class: "text-dark" %></p>
         </div>
-         <hr class="my-0" />
           <div class="card-body pb-0">
-            <div class="d-flex justify-content-left">
-              <p><strong>Производитель: </strong> <%=  product.manufacturer %></p>
+            <div class="d-flex justify-content-center">
+              <p style="font-size:20px;"><strong>Цена: </strong><%= product.price %> <strong>BYN</strong></p>
             </div>
           </div>
-          <hr class="my-0" />
-          <div class="card-body pb-0">
-            <div class="d-flex justify-content-left">
-              <p><strong>Цена: </strong><%= product.price %> <strong>BYN</strong></p>
-            </div>
-          </div>
-          <hr class="my-0" />
           <div class="card-body">
             <div class="d-flex justify-content-center align-items-center pb-0 mb-1">
                <% if current_user %>
@@ -73,8 +65,9 @@
             </div>
           </div>
       </div>
-    </div>
+    </div><br><br>
   </div
+
   
   <% end %>
  

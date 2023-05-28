@@ -1,5 +1,5 @@
 <main>
-  <div id="carouselExampleCaptions" class="carousel slide carousel-fade mb-5 mt-4" data-bs-ride="carousel">
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade mb-5 mt-4" data-bs-ride="carousel" style="margin-left:110px;">
     <div class="carousel-indicators" style="width:69%">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -10,7 +10,7 @@
         <%= image_tag 'https://cloud.mysmbpage.com/images/imagenes_clientes/pyme_1376_414807.jpg', style: "border-radius: 25px;margin-left: 310px;", size: '1280x500' %>  
       </div>
       <div class="carousel-item">
-        <%= image_tag 'https://cloud.mysmbpage.com/images/imagenes_clientes/pyme_1376_414807.jpg',style: "border-radius: 25px;margin-left: 310px;", size: '1280x500' %> 
+        <%= image_tag 'https://www.geonutricion.es/wp-content/uploads/2018/03/NUTRICION1.jpg',style: "border-radius: 25px;margin-left: 310px;", size: '1280x500' %> 
       </div>  
       <div class="carousel-item">
         <%= image_tag 'https://www.vatupdate.com/wp-content/uploads/2018/07/pizza-3007395_1280-1280x500.jpg', style: "border-radius: 25px;margin-left: 310px;", size: '1280x500' %> 
@@ -47,13 +47,8 @@
         <h4><%= link_to product.name, product, class: "a" %></h4>
         </div>
           <div class="card-body pb-0">
-            <div class="d-flex justify-content-left">
-              <p><strong>Производитель: </strong> <%=  product.manufacturer %></p>
-            </div>
-          </div>
-          <div class="card-body pb-0">
-            <div class="d-flex justify-content-left">
-              <p><strong>Цена: </strong><%= product.price %> <strong>BYN</strong></p>
+            <div class="d-flex justify-content-center">
+              <p style="font-size:20px;"><%= product.price %> <strong>BYN</strong></p>
             </div>
           </div>
           <div class="card-body">
@@ -86,7 +81,7 @@
 
         <div class="row">
           <div class="col-lg-6 aos-init aos-animate" data-aos="fade-right">
-            <img src="https://avatars.mds.yandex.net/get-altay/4464784/2a00000179d8fc626081e286dc02b1e64736/orig" class="img-fluid" alt="">
+            <img src="https://avatars.mds.yandex.net/get-altay/4464784/2a00000179d8fc626081e286dc02b1e64736/orig" class="img-fluid" alt="" style="border-radius:25px;">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content aos-init aos-animate" data-aos="fade-left">
             <h3>Добро пожаловать на сайт магазина «Новый Континент»</h3>
@@ -110,82 +105,130 @@
       </div>
     </section>
 
-      <section id="contact" class="contact" name="contact">
-      <div class="container aos-init aos-animate" data-aos="fade-up">
+ <section id="chefs" class="chefs section-bg">
+      <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h2>Контакты</h2>
-          <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p>
+          <h2>Наши повара</h2>
+          <p>Наши <span>проффесиональные</span> повара.</p>
         </div>
 
-        <div class="row gx-lg-0 gy-4">
+        <div class="row gy-4">
 
-          <div class="col-lg-4">
-
-            <div class="info-container d-flex flex-column align-items-center justify-content-center">
-              <div class="info-item d-flex">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h4>Адрес:</h4>
-                  <p>Г.Жлобин, Ул.К.Маркса, 64</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h4>Электронная почта:</h4>
-                  <p>manasOOOzh@gmail.com</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-phone flex-shrink-0"></i>
-                <div>
-                  <h4>Телефон:</h4>
-                  <p>+375(44)760-54-58<br>+375(44)522-522-0<br>8 ( 02334 ) 7-98-98</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-clock flex-shrink-0"></i>
-                <div>
-                  <h4>Время работы:</h4>
-                  <p>Понедельник-Суббота: 10:00 - 20:00</p>
-                </div>
-              </div><!-- End Info Item -->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="https://static.tildacdn.com/tild3136-3834-4830-a565-663137383965/DSC01083.jpg" style="height:650px;" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Игорь Брагин</h4>
+                <span>Повар</span>
+                <p>Секрет успеха в жизни заключается в том, чтобы есть то, что вам нравится, и позволить пище бороться внутри.</p>
+              </div>
             </div>
+          </div><!-- End Chefs Member -->
 
-          </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="https://thumb.tildacdn.com/tild3265-3838-4831-b435-666464653664/-/resize/824x/-/format/webp/IMG_7246.jpg" style="height:650px;" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Антон Кабанов</h4>
+                <span>Повар</span>
+                <p>Авторская кухня - это показать свою индивидуальность в том, что вы делаете, и это чувство делает его чем-то другим.</p>
+              </div>
+            </div>
+          </div><!-- End Chefs Member -->
 
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" required="" style="border-radius:15px;">
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Электронная почта" required="" style="border-radius:15px;">
-                </div>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="https://static.sobaka.ru/images/image/01/20/18/02/_normal.jpg?v=1572944636" style="height:650px;" class="img-fluid" alt="">
               </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Что случилось?" required="" style="border-radius:15px;">
+              <div class="member-info">
+                <h4>Юрий Колеснев</h4>
+                <span>Повар</span>
+                <p>Открытие нового блюда более выгодно для человечества, чем открытие звезды.</p>
               </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="7" placeholder="Ваше сообщение" required="" style="border-radius:15px;"></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Отправить</button></div>
-            </form>
-          </div><!-- End Contact Form -->
+            </div>
+          </div><!-- End Chefs Member -->
 
         </div>
 
       </div>
-    </section>
+    </section><!-- End Chefs Section -->
+
+        <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>О нас</h2>
+          <p>Информация о нас!</p>
+        </div>
+
+        <div class="mb-3">
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+        </div><!-- End Google Maps -->
+
+        <div class="row gy-4">
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <div>
+                <h3>Наш адрес</h3>
+                <p>Республика Беларусь, Гомельская область, Г.Жлобин, Ул.К.Маркса, 64</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center">
+              <div>
+                <h3>Электронная почта</h3>
+                <p>newcontinent@example.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <div>
+                <h3>Номер</h3>
+                <div><strong>+375 ( 44 ) 724-19-23</strong>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item  d-flex align-items-center">
+              <div>
+                <h3>Время работы</h3>
+                <div><strong>Пн-Вс:</strong> 07:00 - 23:00;
+                </div>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+
+
     </div>
 </main>
+
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="width:70%; margin-left:250px;">
+    <p class="col-md-4 mb-0 text-body-secondary">&copy; 2023 Новый континент</p>
+
+    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Главная</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Товары</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Контакты</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">О нас</a></li>
+    </ul>
+  </footer>

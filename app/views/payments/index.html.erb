@@ -1,0 +1,46 @@
+<div class="container mt-4">
+  <table class="table text-center" style="width:120%; margin-left:-100px;">
+    <thead class="table-dark">
+      <tr>
+        <th>Картинка</th>
+        <th>Название</th>
+        <th>Количество</th>
+        <th>Цена</th>
+        <th>Оплачено</th>
+        <th>Номер телефона</th>
+        <th>Фио</th>
+        <th>Город</th>
+        <th>Улица</th>
+        <th>Дом</th>
+        <th>Квартира</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody class="table-bordered">
+      <% @payments.each do |payment| %>
+          <% payment.cart.orderables.each do |orderable|%>
+            <tr>
+              <td><%=image_tag(orderable.product.image, style:"width: 60px; height: 60px; border-radius: 20px;", class: "img-fluid") %></td>
+             <td class="product-text"> <strong><%= orderable.product.name %></strong></td>
+              <td class="product-text"><%= orderable.quantity %></td>
+              <td class="product-price"><%= orderable.product.price %></td>
+              <td class="product-text"><%= orderable.created_at.to_s.split('UTC')[0].capitalize %></td>
+              <td class="product-text"><%= payment.user.phone %></td>
+              <td class="product-text"><%= payment.user.name %></td>
+              <td class="product-text"><%= payment.user.city %></td>
+              <td class="product-text"><%= payment.user.street %></td>
+              <td class="product-text"><%= payment.user.house %></td>
+              <td class="product-text"><%= payment.user.flat_number %></td>
+              <td class="product-text"><div class="form-check form-switch">
+              <% if current_user.admin?%>
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" autocomplete="on | off"/>
+              <% end%>
+            </div></td>
+            </tr>
+        <% end %>
+      <% end %>
+  </tbody>
+ </table>
+
+</div>
