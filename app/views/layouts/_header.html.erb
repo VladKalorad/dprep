@@ -28,18 +28,18 @@
               </ul>
           
           <% end %>
-            <a class="nav-link dropdown-toggle btn btn-danger" style="color: white; font-size: 16px; border-radius:15px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+            <a class="nav-link dropdown-toggle btn btn-danger" style="color: white; font-size: 16px; border-radius:15px;padding:10px 20px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
               👶
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
               
-              <%= link_to 'Личный кабинет', user_path(current_user), class: 'dropdown-item' %>
+              <%= link_to 'Личный кабинет', user_path(current_user), class: 'dropdown-item'%>
               <%= link_to 'История заказов', payments_path, class: 'dropdown-item' %>
-              <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: 'dropdown-item' %>
+              <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: 'dropdown-item'%>
               
             </ul>
              <%= link_to '👜'.html_safe, cart_path, class: 'nav-link', style: "font-size:25px;"%>
-            <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-warning", style: "margin-left:5px; border-radius:15px;"%>
+            <%= link_to "Выйти", destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-warning", style: "margin-left:5px; border-radius:15px;padding:10px 20px;"%>
  <% end %>
         <div class="text-end">
         <% if current_user %>

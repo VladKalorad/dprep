@@ -30,6 +30,6 @@ class PaymentsController < ApplicationController
   def payment_params
     params
       .require(:payment)
-      .permit(:cart_id, :user_id)
+      .permit(:cart_id, :user_id, :bid)
   end
 end
