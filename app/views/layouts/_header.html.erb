@@ -11,9 +11,9 @@
       <nav id="navbar" class="navbarg">
         <ul>
           <li><%= link_to 'Главная', root_path, class: "nav-link px-2 text-secondary"%></li>
-          <li><a href="#goods" class="nav-link px-2 text-secondary">Товары</a></li>
+          <li><%= link_to 'Товары', products_path, class: "nav-link px-2 text-secondary"%></li>
           <li><a href="#contact" class="nav-link px-2 text-secondary">Контакты</a></li>
-          <li><a href="#events" class="nav-link px-2 text-secondary">О нас</a></li>
+          <li><a href="#about" class="nav-link px-2 text-secondary">О нас</a></li>
       </nav><!-- .navbar -->
       <% if current_user %>
        <% if current_user&.admin? %>

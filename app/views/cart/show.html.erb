@@ -2,9 +2,9 @@
   <% if @cart.orderables.count > 0 %>
     <%= render "cart/orderables" %>
   <% else %>
-    <h1 class="mt-5 mb-5">Ваша корзина <b>пуста.   </b><b>!</b></h1>
+    <h1 class="mt-5 mb-5 text-center">Ваша корзина пуста.<br> <b>Добавьте товар  </b><b>!</b></h1>
     <div class="col-md-12 text-center">
-      <%= link_to 'Перейти в каталог', products_path, class: 'btn btn-danger btn-lg' %>
+      <%= link_to 'Перейти в каталог', products_path, class: 'btn btn-danger btn-lg', style: "padding:15px 110px;" %>
     </div>
   <% end %>
 <% end %>
